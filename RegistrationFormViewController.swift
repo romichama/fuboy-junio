@@ -23,14 +23,15 @@ class RegistrationFormViewController: FXFormViewController {
     func submitRegistrationForm(cell: FXFormFieldCellProtocol) {
         
         //we can lookup the form from the cell if we want, like this:
-        let form = cell.field.form as RegistrationForm
+//        let form = cell.field.form as RegistrationForm
         
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let contxt:NSManagedObjectContext = appDel.managedObjectContext!
-        let en = NSEntityDescription.entityForName("Producto", inManagedObjectContext: contxt)
+//        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+  //      let contxt:NSManagedObjectContext = appDel.managedObjectContext!
+    //    let en = NSEntityDescription.entityForName("Producto", inManagedObjectContext: contxt)
        
         
         //we can then perform validation, etc
+  /*
         if form.agreedToTerms {
             println(form.nproduct)
             println(form.cproduct)
@@ -65,8 +66,8 @@ class RegistrationFormViewController: FXFormViewController {
             
             UIAlertView(title: "User Error", message: "Please agree to the terms and conditions before proceeding", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: "Yes Sir!").show()
         }
-        
-        contxt.save(nil)
+    */    
+    //    contxt.save(nil)
         // self.navigationController?.popToRootViewControllerAnimated(true)
         self.navigationController?.popViewControllerAnimated(true)
         

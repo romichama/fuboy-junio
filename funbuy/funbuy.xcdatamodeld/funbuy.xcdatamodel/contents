@@ -1,14 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Producto" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ChatRegistro" syncable="YES">
+        <attribute name="dateCRegistro" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="receivedCRegistro" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sendCRegistro" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Cliente" syncable="YES">
+        <attribute name="idCliente" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idCompra" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idProducto" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationshipChatRegistro" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatRegistro" syncable="YES"/>
+    </entity>
+    <entity name="CopraXMayor" isAbstract="YES" syncable="YES">
+        <attribute name="cantidadCXMayor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="finalprecioXMayor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="precioXMayor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rebajaCXMayor" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Cupones" isAbstract="YES" syncable="YES">
+        <attribute name="precioCupon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipodeCupon" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Descuentos" isAbstract="YES" syncable="YES">
+        <attribute name="descuento" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="precioDescuento" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Lista" isAbstract="YES" syncable="YES">
+        <attribute name="dateLista" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="descripcionLista" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgLista" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="nombreLista" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationshipProducto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Producto" syncable="YES"/>
+    </entity>
+    <entity name="Ofertas" isAbstract="YES" syncable="YES">
+        <attribute name="fechafinalOferta" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fechainicioOferta" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipoOferta" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationshipCompraXMayor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CopraXMayor" syncable="YES"/>
+        <relationship name="relationshipCupones" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cupones" syncable="YES"/>
+        <relationship name="relationshipDescuentos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Descuentos" syncable="YES"/>
+        <relationship name="relationshipRegalo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Regalo" syncable="YES"/>
+    </entity>
+    <entity name="Personal" isAbstract="YES" syncable="YES">
+        <attribute name="apellidoPersonal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docciPersonal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fonoPersonal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombrePersonal" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Producto" isAbstract="YES" syncable="YES">
         <attribute name="calidadListaProducto" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cantidadListaProducto" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="caracteristicasListaProducto" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="categoriaListaProducto" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="habitoListaProducto" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingListaProducto" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="marcaListaProducto" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nombreListaProducto" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="precioListaProducto" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tallaListaProducto" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationshipOferta" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ofertas" syncable="YES"/>
+    </entity>
+    <entity name="Regalo" isAbstract="YES" syncable="YES">
+        <attribute name="cantidadRegalo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipoRegalo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unicompradasRegalo" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Tiemda" isAbstract="YES" syncable="YES">
+        <attribute name="descripcionTiemda" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fonoTiemda" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="horarioTiemda" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="nicrucfacturaTiemda" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombreTiemda" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numeroTiemda" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="redSocial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ubicacionTiemda" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationshipLista" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lista" syncable="YES"/>
+        <relationship name="relationshipPersonal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personal" syncable="YES"/>
+        <relationship name="relationshipVender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vender" syncable="YES"/>
+    </entity>
+    <entity name="Vender" syncable="YES">
+        <attribute name="cantidadProductos" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cantidadVentas" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numeroVentas" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationshipCliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Producto" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Producto" positionX="-7247" positionY="-2754" width="128" height="208"/>
+        <element name="Tiemda" positionX="-7578" positionY="-2988" width="128" height="208"/>
+        <element name="Personal" positionX="-7301" positionY="-2943" width="128" height="103"/>
+        <element name="Lista" positionX="-7434" positionY="-2719" width="128" height="118"/>
+        <element name="Ofertas" positionX="-7103" positionY="-2817" width="164" height="148"/>
+        <element name="CopraXMayor" positionX="-6966" positionY="-2952" width="128" height="103"/>
+        <element name="Descuentos" positionX="-6858" positionY="-2719" width="128" height="73"/>
+        <element name="Cupones" positionX="-6885" positionY="-2835" width="128" height="73"/>
+        <element name="Regalo" positionX="-6966" positionY="-2637" width="128" height="88"/>
+        <element name="Vender" positionX="-7578" positionY="-2587" width="128" height="103"/>
+        <element name="Cliente" positionX="-7389" positionY="-2511" width="128" height="103"/>
+        <element name="ChatRegistro" positionX="-7200" positionY="-2500" width="128" height="88"/>
     </elements>
 </model>

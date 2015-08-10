@@ -180,9 +180,9 @@ class DetalleProducto: UIViewController,UIImagePickerControllerDelegate, UINavig
         
         // Unwrap the current object object
         if let object = currentObject {
-            nListaCompra.text = object["nombreListaCompra"] as String
-            dListaCompra.text = object["descripcionListaCompra"] as String
-            hListaCompra.text = object["habitoListaCompra"] as String
+            nListaCompra.text = object["nombreListaCompra"] as! String
+            dListaCompra.text = object["descripcionListaCompra"] as! String
+            hListaCompra.text = object["habitoListaCompra"] as! String
             
             var initialThumbnail = UIImage(named: "question")
             ingListaCompra.image = initialThumbnail

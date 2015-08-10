@@ -57,7 +57,7 @@ class ListTableViewController: PFQueryTableViewController {
         //var cell = tableView.dequeueReusableCellWithIdentifier("CustomCell") as ListCustomCell
         
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as ListCustomCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! ListCustomCell!
         
         if cell == nil {
             cell = ListCustomCell(style: UITableViewCellStyle.Default, reuseIdentifier: "ListCustomCell")
@@ -90,12 +90,12 @@ class ListTableViewController: PFQueryTableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         // Get the new view controller using [segue destinationViewController].
-        var detailScene = segue.destinationViewController as DetalleList
+        var detailScene = segue.destinationViewController as! DetalleList
         
         // Pass the selected object to the destination view controller.
         if let indexPath = self.tableView.indexPathForSelectedRow() {
             let row = Int(indexPath.row)
-            detailScene.currentObject = objects?[row] as PFObject
+            detailScene.currentObject = objects?[row] as! PFObject
         }
     }
     
@@ -113,7 +113,7 @@ class ListTableViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            let objectToDelete = objects?[indexPath.row] as PFObject
+            let objectToDelete = objects?[indexPath.row] as! PFObject
             objectToDelete.deleteInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {

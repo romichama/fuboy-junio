@@ -30,14 +30,14 @@ class RegistrarViewController: UIViewController, PFLogInViewControllerDelegate, 
             var logInLogoTitle = UILabel()
             logInLogoTitle.text = "Vea Software"
             
-            self.logInViewController.logInView.logo = logInLogoTitle
+       //     self.logInViewController.logInView.logo = logInLogoTitle
             
             self.logInViewController.delegate = self
             
             var SignUpLogoTitle = UILabel()
             SignUpLogoTitle.text = "Vea Software"
             
-            self.signUpViewController.signUpView.logo = SignUpLogoTitle
+      //      self.signUpViewController.signUpView.logo = SignUpLogoTitle
             
             self.signUpViewController.delegate = self
             

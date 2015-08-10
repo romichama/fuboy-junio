@@ -27,7 +27,7 @@ class ProductoTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         println("Load....  111111111111")
         // Dispose of any resources that can be recreated.
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let freq = NSFetchRequest (entityName: "Producto")
         
@@ -45,8 +45,8 @@ class ProductoTableViewController: UITableViewController {
         if (segue.identifier == "update")
         {   println("NEXT...")
             var seletedIndex = self.tableView.indexPathForSelectedRow()?.row
-            var selectedItem: NSManagedObject = myList[seletedIndex!] as NSManagedObject
-            let desti = segue.destinationViewController as addProduct
+            var selectedItem: NSManagedObject = myList[seletedIndex!] as! NSManagedObject
+            let desti = segue.destinationViewController as! addProduct
             desti.currentItem = selectedItem
             println("si envio los datosssssssssss")
             
@@ -66,19 +66,7 @@ class ProductoTableViewController: UITableViewController {
         return myList.count
     }
     
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let CellID: NSString = "Cell"
-        //var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
-        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellID) as UITableViewCell
-        //cell.textLabel!.text = "test"
-        
-        var data:NSManagedObject = myList[indexPath.row] as NSManagedObject
-        cell.textLabel?.text = data.valueForKey("nombreListaProducto") as? String
-        
-        return cell
-    }
-    
+  
     
     /*
     // Override to support conditional editing of the table view.
@@ -92,11 +80,11 @@ class ProductoTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let contxt:NSManagedObjectContext = appDel.managedObjectContext!
         
         if editingStyle == UITableViewCellEditingStyle.Delete{
-            var deletedItem:NSManagedObject = myList[indexPath.row] as NSManagedObject
+            var deletedItem:NSManagedObject = myList[indexPath.row] as! NSManagedObject
             contxt.deleteObject(deletedItem)
             myList.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)

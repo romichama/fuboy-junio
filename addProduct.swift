@@ -38,10 +38,10 @@ class addProduct: UIViewController, CLLocationManagerDelegate {
        
             println("helllloooooooooooooooooooooo")
             
-            calListaProducto.text = currentItem.valueForKey("calidadListaProducto") as String
-            cListaProducto.text = currentItem.valueForKey("caracteristicasListaProducto") as String
-            caListaProducto.text = currentItem.valueForKey("categoriaListaProducto") as String
-            hListaProducto.text = currentItem.valueForKey("habitoListaProducto") as String
+            calListaProducto.text = currentItem.valueForKey("calidadListaProducto") as! String
+            cListaProducto.text = currentItem.valueForKey("caracteristicasListaProducto") as! String
+            caListaProducto.text = currentItem.valueForKey("categoriaListaProducto") as! String
+            hListaProducto.text = currentItem.valueForKey("habitoListaProducto") as! String
             
             
             println("configurando algo")
@@ -73,7 +73,7 @@ class addProduct: UIViewController, CLLocationManagerDelegate {
            mapView.setRegion(region, animated: true)
             
             let annotation = MKPointAnnotation()
-            annotation.setCoordinate(location)
+        //    annotation.setCoordinate(location)
             annotation.title = "Big Ben"
             annotation.subtitle = "London"
             
@@ -81,8 +81,8 @@ class addProduct: UIViewController, CLLocationManagerDelegate {
 
             println("hellllooooooo3333333333333")
             
-            nListaProducto.text = currentItem.valueForKey("nombreListaProducto") as String
-            pListaProducto.text = currentItem.valueForKey("precioListaProducto") as String
+            nListaProducto.text = currentItem.valueForKey("nombreListaProducto") as! String
+            pListaProducto.text = currentItem.valueForKey("precioListaProducto") as! String
            
             
         }
@@ -99,7 +99,7 @@ class addProduct: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func buttonSave(sender: AnyObject){
         // Reference to our app delegate
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let contxt:NSManagedObjectContext = appDel.managedObjectContext!
         let en = NSEntityDescription.entityForName("Producto", inManagedObjectContext: contxt)
         if (currentItem != nil){
